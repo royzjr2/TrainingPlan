@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-Week Speed Running Plan</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #e9ecef;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .header {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-top: 5px solid #663399;
+        }
+        
+        .header h1 { color: #663399; font-size: 2.5em; margin-bottom: 20px; }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #663399;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .info-box h2 { color: #4d1a78; margin-bottom: 15px; }
+        .info-box ul { list-style: none; padding-left: 0; }
+        .info-box li { margin: 8px 0; }
+        
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #dc143c;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .warning-box h3 { color: #dc143c; margin-bottom: 10px; }
+        
+        .week-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .week-header {
+            background: linear-gradient(135deg, #663399 0%, #4d1a78 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .week-header:hover { background: linear-gradient(135deg, #4d1a78 0%, #663399 100%); }
+        .week-title { font-size: 1.5em; font-weight: bold; }
+        .week-phase { font-size: 0.9em; opacity: 0.9; }
+        
+        .week-content { display: none; padding: 20px; }
+        .week-content.active { display: block; }
+        
+        .week-focus {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid #663399;
+        }
+        
+        .week-progress {
+            background: #fff;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 3px solid #663399;
+            font-size: 0.95em;
+            color: #666;
+        }
+        
+        .week-progress strong { color: #663399; }
+        
+        .day-card {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .day-header {
+            background: #f8f9fa;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #dc143c;
+            transition: background 0.3s;
+        }
+        
+        .day-header.completed {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        
+        .day-header:hover { background: #e9ecef; }
+        .day-header.completed:hover { background: #c3e6cb; }
+        
+        .day-header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+        
+        .checkbox-container input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: #663399;
+        }
+        
+        .day-title { font-weight: bold; font-size: 1.1em; }
+        .day-duration { color: #666; font-size: 0.9em; }
+        
+        .day-content { display: none; padding: 20px; background: white; }
+        .day-content.active { display: block; }
+        
+        .workout-section {
+            background: #f0f8ff;
+            border-left: 4px solid #663399;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .workout-section h4 { color: #4d1a78; margin-bottom: 10px; }
+        .workout-detail { margin: 8px 0; color: #333; }
+        .workout-detail strong { color: #4d1a78; }
+        
+        .toggle-icon { transition: transform 0.3s; font-size: 1.2em; }
+        .toggle-icon.rotated { transform: rotate(180deg); }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #663399 0%, #4d1a78 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .summary-box h3 { margin-bottom: 20px; font-size: 1.5em; }
+        .summary-box p { margin: 10px 0; line-height: 1.8; }
+        
+        .reset-button {
+            background: #dc143c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .reset-button:hover { background: #b01030; }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>8-Week Speed Running Plan</h1>
+            
+            <div class="info-box">
+                <h2>Program Overview</h2>
+                <ul>
+                    <li><strong>Goal:</strong> Build speed, power, and running economy</li>
+                    <li><strong>Duration:</strong> 8 weeks progressive training</li>
+                    <li><strong>Structure:</strong> 2 Speed Days + 1 Recovery Run + 1 Long Run per week</li>
+                    <li><strong>Weekly Volume:</strong> 15-28 miles at peak</li>
+                    <li><strong>Focus:</strong> Dynamic speed work with variety</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>Pace Guide (Your Reference)</h3>
+                <ul>
+                    <li><strong>Recovery Pace:</strong> 10:00-10:30/mile</li>
+                    <li><strong>Easy Pace:</strong> 9:30-10:00/mile</li>
+                    <li><strong>Marathon Pace:</strong> 9:30/mile</li>
+                    <li><strong>Tempo/Threshold:</strong> 8:30-9:00/mile</li>
+                    <li><strong>5K Race Pace:</strong> 8:30/mile</li>
+                    <li><strong>Interval Pace:</strong> 7:30-8:00/mile</li>
+                    <li><strong>Sprint Pace:</strong> 7:00-7:30/mile (max effort)</li>
+                    <li><strong>✓ Check off runs as you complete them - progress saves automatically!</strong></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="weeks-container"></div>
+        
+        <div class="summary-box">
+            <h3>Program Progression</h3>
+            <p><strong>Weeks 1-3:</strong> Build foundation with varied speed work</p>
+            <p><strong>Week 4:</strong> Recovery week (deload)</p>
+            <p><strong>Weeks 5-7:</strong> Peak training - maximum intensity</p>
+            <p><strong>Week 8:</strong> Taper & test your fitness</p>
+            <button class="reset-button" onclick="resetAllProgress()">Reset All Progress</button>
+        </div>
+    </div>
+    
+    <script>
+        // Week data structure
+        const programData = {
+            weeks: [
+                {
+                    week: 1,
+                    phase: "Building the Foundation",
+                    focus: "Establish baseline fitness and speed",
+                    days: [
+                        {
+                            title: "Speed Day 1: Tempo Intervals",
+                            distance: "~6 miles",
+                            workout: "10 min easy warm-up → 4x5 min @ 8:30-9:00 pace (2 min recovery jog) → 10 min cool down",
+                            focus: "Finding your tempo rhythm, controlled breathing"
+                        },
+                        {
+                            title: "Speed Day 2: Short Intervals",
+                            distance: "~5 miles",
+                            workout: "10 min easy warm-up → 8x400m @ 7:30-8:00 pace (90 sec recovery jog) → 10 min cool down",
+                            focus: "Leg turnover, speed endurance"
+                        },
+                        {
+                            title: "Recovery Run",
+                            distance: "3 miles",
+                            workout: "3 miles easy @ 10:00-10:30 pace",
+                            focus: "Active recovery, conversational pace"
+                        },
+                        {
+                            title: "Long Run",
+                            distance: "5 miles",
+                            workout: "5 miles @ 9:30-10:00 pace (easy, conversational)",
+                            focus: "Building aerobic base"
+                        }
+                    ]
+                },
+                {
+                    week: 2,
+                    phase: "Progressive Build",
+                    focus: "Increase variety and volume",
+                    days: [
+                        {
+                            title: "Speed Day 1: Fartlek Fun",
+                            distance: "~6.5 miles",
+                            workout: "10 min easy warm-up → 30 min fartlek (2 min hard @ 7:30-8:00, 2 min easy recovery, repeat) → 10 min cool down",
+                            focus: "Variable pace, mental toughness"
+                        },
+                        {
+                            title: "Speed Day 2: Hill Repeats",
+                            distance: "~5.5 miles",
+                            workout: "10 min easy warm-up → 8x90 sec hill repeats @ hard effort (jog down recovery) → 10 min cool down",
+                            focus: "Power, strength, running economy - Find a 4-6% grade hill"
+                        },
+                        {
+                            title: "Recovery Run",
+                            distance: "3.5 miles",
+                            workout: "3.5 miles easy @ 10:00-10:30 pace",
+                            focus: "Shake out the legs"
+                        },
+                        {
+                            title: "Long Run",
+                            distance: "6 miles",
+                            workout: "6 miles @ 9:30-10:00 pace",
+                            focus: "Consistent pacing, building endurance"
+                        }
+                    ]
+                },
+                {
+                    week: 3,
+                    phase: "Intensity Increases",
+                    focus: "Push the pace, build mental toughness",
+                    days: [
+                        {
+                            title: "Speed Day 1: Ladder Intervals",
+                            distance: "~6.5 miles",
+                            workout: "10 min easy warm-up → 400m, 800m, 1200m, 800m, 400m @ 7:30-8:00 pace (equal time recovery) → 10 min cool down",
+                            focus: "Pacing control - If 800m takes 3:00, rest 3:00"
+                        },
+                        {
+                            title: "Speed Day 2: Tempo Run",
+                            distance: "~6 miles",
+                            workout: "10 min easy warm-up → 20 min @ 8:30 pace (steady state) → 10 min cool down",
+                            focus: "Lactate threshold training, sustained effort"
+                        },
+                        {
+                            title: "Recovery Run",
+                            distance: "4 miles",
+                            workout: "4 miles easy @ 10:00-10:30 pace",
+                            focus: "Easy miles, enjoy the run"
+                        },
+                        {
+                            title: "Long Run",
+                            distance: "7 miles",
+                            workout: "7 miles @ 9:30-10:00 pace",
+                            focus: "Negative split practice (second half slightly faster)"
+                        }
+                    ]
+                },
+                {
+                    week: 4,
+                    phase: "RECOVERY WEEK (Deload)",
+                    focus: "Active recovery - reduce volume and intensity",
+                    days: [
+                        {
+                            title: "Speed Day 1: Easy Fartlek",
+                            distance: "~5 miles",
+                            workout: "10 min easy warm-up → 20 min fartlek (1 min @ 8:00 pace, 2 min easy, repeat) → 10 min cool down",
+                            focus: "Keep it fun, not maximal"
+                        },
+                        {
+                            title: "Speed Day 2: Short Tempo",
+                            distance: "~5 miles",
+                            workout: "10 min easy warm-up → 15 min @ 8:30-9:00 pace → 10 min cool down",
+                            focus: "Active recovery, maintain fitness"
+                        },
+                        {
+                            title: "Recovery Run",
+                            distance: "3 miles",
+                            workout: "3 miles easy @ 10:00-10:30 pace",
+                            focus: "True recovery"
+                        },
+                        {
+                            title: "Long Run",
+                            distance: "6 miles",
+                            workout: "6 miles @ 9:30-10:00 pace (reduce from progression)",
+                            focus: "Easy, conversational, let body recover"
+                        }
+                    ]
+                },
+                {
+                    week: 5,
+                    phase: "Back to Building",
+                    focus: "Higher intensity returns",
+                    days: [
+                        {
+                            title: "Speed Day 1: VO2 Max Intervals",
+                            distance: "~7 miles",
+                            workout: "10 min easy warm-up → 6x800m @ 7:30 pace (2 min recovery jog) → 10 min cool down",
+                            focus: "Running at the edge - these should feel HARD but controlled"
+                        },
+                        {
+                            title: "Speed Day 2: Hill + Speed Combo",
+                            distance: "~6 miles",
+                            workout: "10 min easy warm-up → 6x2 min hill repeats @ hard effort (jog down) → 5 min easy → 4x200m sprint @ max effort (full recovery) → 10 min cool down",
+                            focus: "Power development + pure speed"
+                        },
+                        {
+                            title: "Recovery Run",
+                            distance: "4 miles",
+                            workout: "4 miles easy @ 10:00-10:30 pace",
+                            focus: "Loose and easy"
+                        },
+                        {
+                            title: "Long Run",
+                            distance: "8 miles",
+                            workout: "8 miles @ 9:30-10:00 pace - Include 3 miles at marathon pace (9:30) in the middle",
+                            focus: "Sustained effort within long run"
+                        }
+                    ]
+                },
+                {
+                    week: 6,
+                    phase: "Peak Training",
+                    focus: "Maximum training load",
+                    days: [
+                        {
+                            title: "Speed Day 1: Threshold Repeats",
+                            distance: "~7.5 miles",
+                            workout: "10 min easy warm-up → 3x10 min @ 8:30 pace (3 min recovery jog) → 10 min cool down",
+                            focus: "Mental toughness, race pace simulation"
+                        },
+                        {
+                            title: "Speed Day 2: Mixed Intervals",
+                            distance: "~6.5 miles",
+                            workout: "10 min easy warm-up → 3x(400m @ 7:30, 200m @ 7:00, 400m @ 7:30) with 90 sec recovery between each, 3 min between sets → 10 min cool down",
+                            focus: "Speed endurance, pace changes"
+                        },
+                        {
+                            title: "Recovery Run",
+                            distance: "4 miles",
+                            workout: "4 miles easy @ 10:00-10:30 pace",
+                            focus: "Flush the legs"
+                        },
+                        {
+                            title: "Long Run",
+                            distance: "9 miles",
+                            workout: "9 miles @ 9:30-10:00 pace - Last 2 miles @ 8:30 pace (progressive long run)",
+                            focus: "Finishing strong when tired"
+                        }
+                    ]
+                },
+                {
+                    week: 7,
+                    phase: "Final Push",
+                    focus: "Peak performance week",
+                    days: [
+                        {
+                            title: "Speed Day 1: Race Pace Simulation",
+                            distance: "~7 miles",
+                            workout: "10 min easy warm-up → 5K time trial @ 8:30 pace OR 2x2 miles @ 8:30 pace (4 min recovery) → 10 min cool down",
+                            focus: "Race simulation, pacing practice"
+                        },
+                        {
+                            title: "Speed Day 2: Speed Endurance",
+                            distance: "~7 miles",
+                            workout: "10 min easy warm-up → 5x1000m @ 7:45-8:00 pace (2.5 min recovery) → 10 min cool down",
+                            focus: "Sustained speed, mental preparation"
+                        },
+                        {
+                            title: "Recovery Run",
+                            distance: "4 miles",
+                            workout: "4 miles easy @ 10:00-10:30 pace",
+                            focus: "Easy recovery"
+                        },
+                        {
+                            title: "Long Run",
+                            distance: "10 miles",
+                            workout: "10 miles @ 9:30-10:00 pace - Miles 5-8 @ 9:00 pace (tempo within long run)",
+                            focus: "Race-specific endurance"
+                        }
+                    ]
+                },
+                {
+                    week: 8,
+                    phase: "Taper & Test",
+                    focus: "Reduce volume, maintain sharpness",
+                    days: [
+                        {
+                            title: "Speed Day 1: Sharpening Workout",
+                            distance: "~5.5 miles",
+                            workout: "10 min easy warm-up → 6x400m @ 7:30 pace (2 min recovery) → 10 min cool down",
+                            focus: "Keep legs sharp, not tired"
+                        },
+                        {
+                            title: "Speed Day 2: Tempo Cruise",
+                            distance: "~5 miles",
+                            workout: "10 min easy warm-up → 15 min @ 8:30 pace → 10 min cool down",
+                            focus: "Maintain fitness, stay fresh"
+                        },
+                        {
+                            title: "Recovery Run",
+                            distance: "3 miles",
+                            workout: "3 miles easy @ 10:00-10:30 pace",
+                            focus: "True easy miles"
+                        },
+                        {
+                            title: "Long Run / Time Trial",
+                            distance: "5-8 miles",
+                            workout: "Option A: 8 miles @ 9:30-10:00 pace (easy, celebratory) OR Option B: 5K/10K race effort to test fitness",
+                            focus: "Celebrate your progress!"
+                        }
+                    ]
+                }
+            ]
+        };
+        
+        // Cookie functions
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + "=" + value + ";expires=" + d.toUTCString() + ";path=/";
+        }
+        
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+        
+        function isRunCompleted(weekIndex, dayIndex) {
+            return getCookie("run_w" + weekIndex + "d" + dayIndex) === "1";
+        }
+        
+        function saveProgress(weekIndex, dayIndex, completed) {
+            setCookie("run_w" + weekIndex + "d" + dayIndex, completed ? "1" : "0", 365);
+            updateWeekProgress(weekIndex);
+        }
+        
+        function updateWeekProgress(weekIndex) {
+            let completed = 0;
+            const totalDays = programData.weeks[weekIndex].days.length;
+            
+            for (let i = 0; i < totalDays; i++) {
+                if (isRunCompleted(weekIndex, i)) completed++;
+            }
+            
+            const el = document.getElementById("progress-" + weekIndex);
+            if (el) el.innerHTML = "<strong>Progress:</strong> " + completed + "/" + totalDays + " runs completed";
+        }
+        
+        function toggleRun(e, w, d) {
+            e.stopPropagation();
+            const cb = e.target;
+            const header = document.getElementById("header-" + w + "-" + d);
+            saveProgress(w, d, cb.checked);
+            if (cb.checked) header.classList.add("completed");
+            else header.classList.remove("completed");
+        }
+        
+        function resetAllProgress() {
+            if (confirm('Reset all progress? This cannot be undone.')) {
+                for (let w = 0; w < programData.weeks.length; w++) {
+                    for (let d = 0; d < programData.weeks[w].days.length; d++) {
+                        setCookie("run_w" + w + "d" + d, "0", -1);
+                    }
+                }
+                location.reload();
+            }
+        }
+        
+        function toggleWeek(w) {
+            const content = document.getElementById("week-" + w);
+            const icon = document.getElementById("icon-" + w);
+            if (content.classList.contains("active")) {
+                content.classList.remove("active");
+                icon.classList.remove("rotated");
+            } else {
+                content.classList.add("active");
+                icon.classList.add("rotated");
+            }
+        }
+        
+        function toggleDay(w, d) {
+            const content = document.getElementById("day-" + w + "-" + d);
+            const icon = document.getElementById("dicon-" + w + "-" + d);
+            if (content.classList.contains("active")) {
+                content.classList.remove("active");
+                icon.classList.remove("rotated");
+            } else {
+                content.classList.add("active");
+                icon.classList.add("rotated");
+            }
+        }
+        
+        // Render program
+        const container = document.getElementById("weeks-container");
+        
+        programData.weeks.forEach((week, w) => {
+            let html = '<div class="week-card">';
+            html += '<div class="week-header" onclick="toggleWeek(' + w + ')">';
+            html += '<div><div class="week-title">Week ' + week.week + '</div>';
+            html += '<div class="week-phase">' + week.phase + '</div></div>';
+            html += '<div class="toggle-icon" id="icon-' + w + '">▼</div></div>';
+            html += '<div class="week-content" id="week-' + w + '">';
+            html += '<div class="week-focus"><strong>Focus:</strong> ' + week.focus + '</div>';
+            html += '<div class="week-progress" id="progress-' + w + '"></div>';
+            
+            week.days.forEach((day, d) => {
+                const checked = isRunCompleted(w, d) ? "checked" : "";
+                const completed = isRunCompleted(w, d) ? "completed" : "";
+                
+                html += '<div class="day-card">';
+                html += '<div class="day-header ' + completed + '" id="header-' + w + '-' + d + '" onclick="toggleDay(' + w + ',' + d + ')">';
+                html += '<div class="day-header-left">';
+                html += '<div class="checkbox-container">';
+                html += '<input type="checkbox" ' + checked + ' onclick="toggleRun(event,' + w + ',' + d + ')">';
+                html += '</div><div>';
+                html += '<div class="day-title">' + day.title + '</div>';
+                html += '<div class="day-duration">' + day.distance + '</div>';
+                html += '</div></div>';
+                html += '<div class="toggle-icon" id="dicon-' + w + '-' + d + '">▼</div></div>';
+                html += '<div class="day-content" id="day-' + w + '-' + d + '">';
+                html += '<div class="workout-section">';
+                html += '<h4>Workout Details</h4>';
+                html += '<div class="workout-detail"><strong>Workout:</strong> ' + day.workout + '</div>';
+                html += '<div class="workout-detail"><strong>Focus:</strong> ' + day.focus + '</div>';
+                html += '</div></div></div>';
+            });
+            
+            html += '</div></div>';
+            container.innerHTML += html;
+            updateWeekProgress(w);
+        });
+        
+        console.log("Running plan loaded successfully!");
+    </script>
+</body>
+</html>

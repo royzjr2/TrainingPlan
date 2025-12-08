@@ -28,6 +28,44 @@
         
         .header h1 { color: #663399; font-size: 2.5em; margin-bottom: 20px; }
         
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #663399 0%, #4d1a78 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-button:hover {
+            background: linear-gradient(135deg, #4d1a78 0%, #663399 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 51, 153, 0.3);
+        }
+        
+        .nav-button.current {
+            background: #dc143c;
+            cursor: default;
+        }
+        
+        .nav-button.current:hover {
+            background: #dc143c;
+            transform: none;
+            box-shadow: none;
+        }
+        
         .info-box {
             background: #f8f9fa;
             border-left: 4px solid #663399;
@@ -191,6 +229,11 @@
     <div class="container">
         <div class="header">
             <h1>8-Week Speed Running Plan</h1>
+            
+            <div class="nav-buttons">
+                <a href="https://royzjr2.github.io/TrainingPlan/" class="nav-button">💪 Strength Training</a>
+                <span class="nav-button current">🏃‍♂️ Running Plan</span>
+            </div>
             
             <div class="info-box">
                 <h2>Program Overview</h2>

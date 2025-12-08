@@ -337,11 +337,11 @@
         
         function updateWeekProgress(weekIndex) {
             let completed = 0;
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < programData.weeks[weekIndex].days.length; i++) {
                 if (isWorkoutCompleted(weekIndex, i)) completed++;
             }
             const el = document.getElementById("progress-" + weekIndex);
-            if (el) el.innerHTML = "<strong>Progress:</strong> " + completed + "/7 days completed";
+            if (el) el.innerHTML = "<strong>Progress:</strong> " + completed + "/" + programData.weeks[weekIndex].days.length + " days completed";
         }
         
         function toggleWorkout(e, w, d) {
@@ -355,8 +355,8 @@
         
         function resetAllProgress() {
             if (confirm('Reset all progress? This cannot be undone.')) {
-                for (let w = 0; w < 10; w++) {
-                    for (let d = 0; d < 7; d++) {
+                for (let w = 0; w < programData.weeks.length; w++) {
+                    for (let d = 0; d < programData.weeks[w].days.length; d++) {
                         setCookie("lift_w" + w + "d" + d, "0", -1);
                     }
                 }
@@ -388,12 +388,107 @@
             }
         }
         
-        // Program data - using your existing week structure  
-        const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        // THIS IS WHERE I'LL PASTE YOUR FULL PROGRAM DATA FROM THE DOCUMENT
+        // Using the exact structure from your working HTML file
         
+        const week1 = {
+            week: 1,
+            phase: "Foundation Phase",
+            focus: "Build base strength and establish movement patterns",
+            days: [
+                {
+                    day: "Monday",
+                    title: "Upper Power - Push Focus",
+                    duration: "35-40 min",
+                    warmup: "3 rounds: 10 arm circles each direction, 10 push-ups, 10 DB overhead press (light)",
+                    exercises: [
+                        { name: "DB Bench Press", sets: "4x6", weight: "Heavy (RPE 8)", rest: "2-3 min", notes: "Controlled descent, explosive press" },
+                        { name: "DB Incline Press", sets: "3x8", weight: "Moderate-Heavy", rest: "90 sec", notes: "" },
+                        { name: "DB Overhead Press", sets: "3x8", weight: "Moderate", rest: "90 sec", notes: "" },
+                        { name: "DB Floor Press", sets: "3x10", weight: "Moderate", rest: "60 sec", notes: "Focus on triceps" },
+                        { name: "Lateral Raise", sets: "3x15", weight: "Light", rest: "45 sec", notes: "" },
+                        { name: "Tricep Kickbacks", sets: "3x12 each", weight: "Light-Moderate", rest: "45 sec", notes: "" }
+                    ],
+                    finisher: "100 push-ups (break into sets as needed) + 2 min plank hold"
+                },
+                {
+                    day: "Tuesday",
+                    title: "Nike Run + Core Circuit",
+                    duration: "Run per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Core Circuit (3 rounds): Sit-ups x20, Leg Raises x15, Mountain Climbers x20, Plank x45 sec, Russian Twists x30"
+                },
+                {
+                    day: "Wednesday",
+                    title: "Lower Power",
+                    duration: "35-40 min",
+                    warmup: "3 rounds: 10 air squats, 10 alternating lunges, 10 glute bridges",
+                    exercises: [
+                        { name: "DB Goblet Squat", sets: "4x6", weight: "Heavy (both DBs)", rest: "2-3 min", notes: "Deep, controlled" },
+                        { name: "DB Romanian Deadlift", sets: "4x8", weight: "Heavy", rest: "2 min", notes: "Hinge pattern, feel hamstrings" },
+                        { name: "Bulgarian Split Squat", sets: "3x8 each", weight: "Moderate", rest: "90 sec", notes: "Back foot elevated on bench" },
+                        { name: "Single-Leg RDL", sets: "3x10 each", weight: "Light-Moderate", rest: "60 sec", notes: "Balance and hamstring focus" },
+                        { name: "DB Calf Raises", sets: "3x20", weight: "Moderate", rest: "45 sec", notes: "Pause at top" }
+                    ],
+                    finisher: "Walking Lunges x50 total (bodyweight), 100 air squats"
+                },
+                {
+                    day: "Thursday",
+                    title: "Nike Run",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Light stretching routine"
+                },
+                {
+                    day: "Friday",
+                    title: "Upper Hypertrophy - Pull Focus",
+                    duration: "35-40 min",
+                    warmup: "3 rounds: 10 scapular push-ups, 10 band pull-aparts, 10 DB rows (light)",
+                    exercises: [
+                        { name: "DB Bent Over Row", sets: "4x12", weight: "Moderate", rest: "90 sec", notes: "Both arms, flat back" },
+                        { name: "Single-Arm DB Row", sets: "3x12 each", weight: "Moderate-Heavy", rest: "60 sec", notes: "Knee on bench" },
+                        { name: "DB Pullover", sets: "3x15", weight: "Moderate", rest: "60 sec", notes: "Lat focus" },
+                        { name: "DB Reverse Fly", sets: "3x15", weight: "Light", rest: "45 sec", notes: "Rear delts" },
+                        { name: "DB Bicep Curl", sets: "3x15", weight: "Moderate", rest: "45 sec", notes: "" },
+                        { name: "DB Hammer Curl", sets: "3x15", weight: "Moderate", rest: "45 sec", notes: "" },
+                        { name: "DB Shrug", sets: "3x20", weight: "Heavy", rest: "45 sec", notes: "" }
+                    ],
+                    finisher: "Max rep push-ups + max rep DB rows (light weight)"
+                },
+                {
+                    day: "Saturday",
+                    title: "Lower Hypertrophy OR Nike Long Run",
+                    duration: "35-40 min OR per NRC",
+                    warmup: "If lifting: 3 rounds: 10 bodyweight squats, 10 lunges, 10 leg swings each leg",
+                    exercises: [
+                        { name: "DB Squat", sets: "4x15", weight: "Moderate", rest: "90 sec", notes: "Tempo: 3 sec down, 1 sec up" },
+                        { name: "DB Stiff-Leg Deadlift", sets: "4x15", weight: "Moderate", rest: "90 sec", notes: "" },
+                        { name: "DB Reverse Lunge", sets: "3x12 each", weight: "Moderate", rest: "60 sec", notes: "" },
+                        { name: "DB Step-Ups", sets: "3x12 each", weight: "Light-Moderate", rest: "60 sec", notes: "Use bench" },
+                        { name: "DB Goblet Squat Hold", sets: "3x30 sec", weight: "Heavy", rest: "60 sec", notes: "Bottom position" }
+                    ],
+                    finisher: "Thrusters: 20 reps, 1 min plank, 15 reps, 1 min plank, 10 reps, 1 min plank"
+                },
+                {
+                    day: "Sunday",
+                    title: "Rest / Stretch / Yoga",
+                    duration: "Active recovery",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Focus on mobility and recovery"
+                }
+            ]
+        };
+
+        // Create week 2
+        const week2 = _.cloneDeep(week1);
+        week2.week = 2;
+        week2.focus = "Same structure, increase weight 5-10% where possible";
+        
+        // For weeks 3-10, use simplified structure (same as document shows)
         const weekData = [
-            { phase: "Foundation Phase", focus: "Build base strength and establish movement patterns" },
-            { phase: "Foundation Phase", focus: "Same structure, increase weight 5-10%" },
             { phase: "Foundation Phase", focus: "Continue progressive overload, pushing for PRs" },
             { phase: "Foundation Phase - Peak Week", focus: "Push for heaviest weights before deload" },
             { phase: "DELOAD WEEK", focus: "Recovery - reduce volume by 40%" },
@@ -404,57 +499,109 @@
             { phase: "ASSESSMENT WEEK", focus: "Test progress, celebrate gains!" }
         ];
         
-        const dayTitles = {
-            Monday: "Upper Power - Push Focus",
-            Tuesday: "Nike Run + Core Circuit",
-            Wednesday: "Lower Power",
-            Thursday: "Nike Run",
-            Friday: "Upper Hypertrophy - Pull Focus",
-            Saturday: "Lower Hypertrophy OR Nike Long Run",
-            Sunday: "Rest / Stretch / Yoga"
-        };
-        
-        // Render program
-        const container = document.getElementById("weeks-container");
-        
-        for (let w = 0; w < 10; w++) {
-            let html = '<div class="week-card">';
-            html += '<div class="week-header" onclick="toggleWeek(' + w + ')">';
-            html += '<div><div class="week-title">Week ' + (w + 1) + '</div>';
-            html += '<div class="week-phase">' + weekData[w].phase + '</div></div>';
-            html += '<div class="toggle-icon" id="icon-' + w + '">▼</div></div>';
-            html += '<div class="week-content" id="week-' + w + '">';
-            html += '<div class="week-focus"><strong>Focus:</strong> ' + weekData[w].focus + '</div>';
-            html += '<div class="week-progress" id="progress-' + w + '"></div>';
-            
-            for (let d = 0; d < 7; d++) {
-                const day = days[d];
-                const title = dayTitles[day];
-                const checked = isWorkoutCompleted(w, d) ? "checked" : "";
-                const completed = isWorkoutCompleted(w, d) ? "completed" : "";
-                
-                html += '<div class="day-card">';
-                html += '<div class="day-header ' + completed + '" id="header-' + w + '-' + d + '" onclick="toggleDay(' + w + ',' + d + ')">';
-                html += '<div class="day-header-left">';
-                html += '<div class="checkbox-container">';
-                html += '<input type="checkbox" ' + checked + ' onclick="toggleWorkout(event,' + w + ',' + d + ')">';
-                html += '</div><div>';
-                html += '<div class="day-title">' + day + ': ' + title + '</div>';
-                html += '<div class="day-duration">35-40 min</div>';
-                html += '</div></div>';
-                html += '<div class="toggle-icon" id="dicon-' + w + '-' + d + '">▼</div></div>';
-                html += '<div class="day-content" id="day-' + w + '-' + d + '">';
-                html += '<div class="finisher-section"><h4>Workout Details</h4>';
-                html += '<p>Follow the program structure for Week ' + (w+1) + '. See full details in your workout log.</p>';
-                html += '</div></div></div>';
-            }
-            
-            html += '</div></div>';
-            container.innerHTML += html;
-            updateWeekProgress(w);
+        // Create weeks 3-10 based on week 1 template
+        const allWeeks = [week1, week2];
+        for (let i = 0; i < 8; i++) {
+            const newWeek = _.cloneDeep(week1);
+            newWeek.week = i + 3;
+            newWeek.phase = weekData[i].phase;
+            newWeek.focus = weekData[i].focus;
+            allWeeks.push(newWeek);
         }
         
-        console.log("Program loaded with working checkboxes!");
+        const programData = { weeks: allWeeks };
+        
+        // Render program
+        function renderProgram() {
+            const container = document.getElementById('weeks-container');
+            
+            programData.weeks.forEach((week, weekIndex) => {
+                const weekCard = document.createElement('div');
+                weekCard.className = 'week-card';
+                
+                let weekHTML = `
+                    <div class="week-header" onclick="toggleWeek(${weekIndex})">
+                        <div>
+                            <div class="week-title">Week ${week.week}</div>
+                            <div class="week-phase">${week.phase}</div>
+                        </div>
+                        <div class="toggle-icon" id="icon-${weekIndex}">▼</div>
+                    </div>
+                    <div class="week-content" id="week-${weekIndex}">
+                        <div class="week-focus"><strong>Focus:</strong> ${week.focus}</div>
+                        <div class="week-progress" id="progress-${weekIndex}"></div>
+                `;
+                
+                week.days.forEach((day, dayIndex) => {
+                    const checked = isWorkoutCompleted(weekIndex, dayIndex) ? "checked" : "";
+                    const completed = isWorkoutCompleted(weekIndex, dayIndex) ? "completed" : "";
+                    
+                    weekHTML += `
+                        <div class="day-card">
+                            <div class="day-header ${completed}" id="header-${weekIndex}-${dayIndex}" onclick="toggleDay(${weekIndex}, ${dayIndex})">
+                                <div class="day-header-left">
+                                    <div class="checkbox-container">
+                                        <input type="checkbox" ${checked} onclick="toggleWorkout(event,${weekIndex},${dayIndex})">
+                                    </div>
+                                    <div>
+                                        <div class="day-title">${day.day}: ${day.title}</div>
+                                        <div class="day-duration">${day.duration}</div>
+                                    </div>
+                                </div>
+                                <div class="toggle-icon" id="dicon-${weekIndex}-${dayIndex}">▼</div>
+                            </div>
+                            <div class="day-content" id="day-${weekIndex}-${dayIndex}">
+                    `;
+                    
+                    if (day.warmup) {
+                        weekHTML += `
+                            <div class="warmup-section">
+                                <h4>Warm-up</h4>
+                                <p>${day.warmup}</p>
+                            </div>
+                        `;
+                    }
+                    
+                    if (day.exercises.length > 0) {
+                        day.exercises.forEach(exercise => {
+                            weekHTML += `
+                                <div class="exercise">
+                                    <div class="exercise-name">${exercise.name}</div>
+                                    <div class="exercise-details">
+                                        ${exercise.sets ? `<div class="exercise-detail"><strong>Sets:</strong> ${exercise.sets}</div>` : ''}
+                                        ${exercise.weight ? `<div class="exercise-detail"><strong>Weight:</strong> ${exercise.weight}</div>` : ''}
+                                        ${exercise.rest ? `<div class="exercise-detail"><strong>Rest:</strong> ${exercise.rest}</div>` : ''}
+                                    </div>
+                                    ${exercise.notes ? `<div class="exercise-notes">${exercise.notes}</div>` : ''}
+                                </div>
+                            `;
+                        });
+                    }
+                    
+                    if (day.finisher) {
+                        weekHTML += `
+                            <div class="finisher-section">
+                                <h4>Finisher</h4>
+                                <p>${day.finisher}</p>
+                            </div>
+                        `;
+                    }
+                    
+                    weekHTML += `
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                weekHTML += `</div>`;
+                weekCard.innerHTML = weekHTML;
+                container.appendChild(weekCard);
+                updateWeekProgress(weekIndex);
+            });
+        }
+        
+        renderProgram();
+        console.log("Program loaded with full workout details and working checkboxes!");
     </script>
 </body>
 </html>

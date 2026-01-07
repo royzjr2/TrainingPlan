@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10-Week Shredded Runner Program</title>
+    <title>18-Week Shredded Runner Program</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -259,7 +259,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>10-Week Shredded Runner Program</h1>
+            <h1>18-Week Shredded Runner Program</h1>
             
             <div class="nav-buttons">
                 <span class="nav-button current">💪 Strength Training</span>
@@ -269,11 +269,11 @@
             <div class="info-box">
                 <h2>Program Overview</h2>
                 <ul>
-                    <li><strong>Goal:</strong> Build strength and muscular endurance while supporting running performance</li>
-                    <li><strong>Duration:</strong> 10 weeks with progressive overload</li>
+                    <li><strong>Goal:</strong> Build shredded runner physique - marathon endurance + CrossFit capability</li>
+                    <li><strong>Duration:</strong> 18 weeks with progressive phases (aligned with marathon training)</li>
                     <li><strong>Equipment:</strong> Dumbbells (up to 55lbs each) + Bench</li>
                     <li><strong>Workout Length:</strong> 35-40 minutes max</li>
-                    <li><strong>Structure:</strong> 4 strength days + Nike Run Club integration</li>
+                    <li><strong>Structure:</strong> 3-4 strength days + Nike Run Club integration</li>
                 </ul>
             </div>
             
@@ -283,9 +283,9 @@
                     <li><strong>RPE 8</strong> = 2 reps left in the tank</li>
                     <li><strong>RPE 9</strong> = 1 rep left in the tank</li>
                     <li><strong>RPE 10</strong> = Maximum effort, no reps left</li>
-                    <li>Increase weight by 5-10% each week when prescribed</li>
-                    <li>Saturday can be Lower Hypertrophy OR your NRC long run - your choice</li>
-                    <li>Rest 2-3 min for heavy lifts, 60-90 sec for moderate, 45 sec for accessories</li>
+                    <li><strong>Tuesday & Thursday:</strong> Always Nike Run Club workouts (all weeks)</li>
+                    <li><strong>Saturday:</strong> NRC Long Run OR Lower Hypertrophy - your choice</li>
+                    <li>Rest: 2-3 min for heavy lifts, 60-90 sec for moderate, 45 sec for accessories</li>
                     <li><strong>✓ Check off workouts as you complete them - progress saves automatically!</strong></li>
                 </ul>
             </div>
@@ -295,13 +295,11 @@
         
         <div class="summary-box">
             <h3>Program Progression Summary</h3>
-            <p><strong>Weeks 1-2:</strong> Foundation Phase - Build base and movement patterns</p>
-            <p><strong>Weeks 3-4:</strong> Foundation Phase Peak - Progressive overload and PRs</p>
-            <p><strong>Week 5:</strong> Deload & Recovery</p>
-            <p><strong>Weeks 6-7:</strong> Strength & Hypertrophy Phase - Higher intensity</p>
-            <p><strong>Week 8:</strong> Peak Week - Maximum effort and absolute PRs</p>
-            <p><strong>Week 9:</strong> Deload & Recovery</p>
-            <p><strong>Week 10:</strong> Assessment Week - Test all your gains!</p>
+            <p><strong>Phase 1: Weeks 1-4</strong> - Adaptive & Mastery: Build foundation, establish movement patterns, progressive overload</p>
+            <p><strong>Phase 2: Weeks 5-7</strong> - Functional Strength Build: Lower reps, explosive movements, supersets, CrossFit-style circuits</p>
+            <p><strong>Phase 3: Weeks 8-10</strong> - Peak Performance: Max strength testing, metabolic conditioning emphasis, integration work</p>
+            <p><strong>Phase 4: Weeks 11-14</strong> - Power Endurance & Race Prep: Muscular endurance focus, injury prevention, support increasing run volume</p>
+            <p><strong>Phase 5: Weeks 15-18</strong> - Taper, Maintenance & Race Week: Minimize fatigue, maintain strength, peak for race day!</p>
             <button class="reset-button" onclick="resetAllProgress()">Reset All Progress</button>
         </div>
     </div>
@@ -388,12 +386,10 @@
             }
         }
         
-        // THIS IS WHERE I'LL PASTE YOUR FULL PROGRAM DATA FROM THE DOCUMENT
-        // Using the exact structure from your working HTML file
-        
+        // PHASE 1: WEEKS 1-4 - ADAPTIVE & MASTERY
         const week1 = {
             week: 1,
-            phase: "Foundation Phase",
+            phase: "Phase 1: Adaptive & Mastery",
             focus: "Build base strength and establish movement patterns",
             days: [
                 {
@@ -413,11 +409,11 @@
                 },
                 {
                     day: "Tuesday",
-                    title: "Nike Run + Core Circuit",
-                    duration: "Run per NRC app",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
                     warmup: "",
                     exercises: [],
-                    finisher: "Core Circuit (3 rounds): Sit-ups x20, Leg Raises x15, Mountain Climbers x20, Plank x45 sec, Russian Twists x30"
+                    finisher: "Post-run: 3 rounds of Core Circuit - Sit-ups x20, Leg Raises x15, Mountain Climbers x20, Plank x45 sec, Russian Twists x30"
                 },
                 {
                     day: "Wednesday",
@@ -435,7 +431,7 @@
                 },
                 {
                     day: "Thursday",
-                    title: "Nike Run",
+                    title: "Nike Run Club Workout",
                     duration: "Per NRC app",
                     warmup: "",
                     exercises: [],
@@ -445,7 +441,7 @@
                     day: "Friday",
                     title: "Upper Hypertrophy - Pull Focus",
                     duration: "35-40 min",
-                    warmup: "3 rounds: 10 scapular push-ups, 10 band pull-aparts, 10 DB rows (light)",
+                    warmup: "3 rounds: 10 scapular push-ups, 10 band pull-aparts (or arm swings), 10 DB rows (light)",
                     exercises: [
                         { name: "DB Bent Over Row", sets: "4x12", weight: "Moderate", rest: "90 sec", notes: "Both arms, flat back" },
                         { name: "Single-Arm DB Row", sets: "3x12 each", weight: "Moderate-Heavy", rest: "60 sec", notes: "Knee on bench" },
@@ -482,34 +478,651 @@
             ]
         };
 
-        // Create week 2
+        // Week 2 - Same as Week 1 with weight increase
         const week2 = _.cloneDeep(week1);
         week2.week = 2;
         week2.focus = "Same structure, increase weight 5-10% where possible";
         
-        // For weeks 3-10, use simplified structure (same as document shows)
-        const weekData = [
-            { phase: "Foundation Phase", focus: "Continue progressive overload, pushing for PRs" },
-            { phase: "Foundation Phase - Peak Week", focus: "Push for heaviest weights before deload" },
-            { phase: "DELOAD WEEK", focus: "Recovery - reduce volume by 40%" },
-            { phase: "Strength & Hypertrophy", focus: "Higher intensity, new rep schemes" },
-            { phase: "Strength & Hypertrophy", focus: "Continued high intensity" },
-            { phase: "Peak Week", focus: "Maximum effort - push absolute limits" },
-            { phase: "DELOAD & RECOVERY", focus: "Active recovery" },
-            { phase: "ASSESSMENT WEEK", focus: "Test progress, celebrate gains!" }
-        ];
+        // Week 3 - Same as Week 1 with continued progression
+        const week3 = _.cloneDeep(week1);
+        week3.week = 3;
+        week3.focus = "Continue progressive overload, pushing for PRs";
         
-        // Create weeks 3-10 based on week 1 template
-        const allWeeks = [week1, week2];
-        for (let i = 0; i < 8; i++) {
-            const newWeek = _.cloneDeep(week1);
-            newWeek.week = i + 3;
-            newWeek.phase = weekData[i].phase;
-            newWeek.focus = weekData[i].focus;
-            allWeeks.push(newWeek);
-        }
+        // Week 4 - Peak of Phase 1
+        const week4 = _.cloneDeep(week1);
+        week4.week = 4;
+        week4.focus = "Push for heaviest weights before Phase 2 - test your limits!";
         
-        const programData = { weeks: allWeeks };
+        // PHASE 2: WEEKS 5-7 - FUNCTIONAL STRENGTH BUILD
+        const week5 = {
+            week: 5,
+            phase: "Phase 2: Functional Strength Build",
+            focus: "Lower reps for pure strength, explosive movements, supersets",
+            days: [
+                {
+                    day: "Monday",
+                    title: "Upper Power & Explosiveness",
+                    duration: "35-40 min",
+                    warmup: "3 rounds: 10 arm circles, 10 explosive push-ups, 10 jump squats",
+                    exercises: [
+                        { name: "DB Bench Press", sets: "5x5", weight: "Heavy (RPE 9)", rest: "2-3 min", notes: "Focus on explosive press" },
+                        { name: "DB Push Press", sets: "4x6", weight: "Heavy", rest: "2 min", notes: "Use leg drive, explosive overhead" },
+                        { name: "Superset A1: DB Incline Press", sets: "3x8", weight: "Moderate-Heavy", rest: "30 sec", notes: "Go immediately to A2" },
+                        { name: "Superset A2: Plyometric Push-ups", sets: "3x8", weight: "Bodyweight", rest: "90 sec", notes: "Explosive, hands leave ground" },
+                        { name: "Superset B1: DB Floor Press", sets: "3x10", weight: "Moderate", rest: "30 sec", notes: "Go immediately to B2" },
+                        { name: "Superset B2: Lateral Raise", sets: "3x12", weight: "Light-Moderate", rest: "60 sec", notes: "Controlled reps" }
+                    ],
+                    finisher: "3 rounds: 10 burpees, 15 DB push press (light), 20 mountain climbers - minimal rest"
+                },
+                {
+                    day: "Tuesday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Post-run stretching"
+                },
+                {
+                    day: "Wednesday",
+                    title: "Lower Strength & Plyometrics",
+                    duration: "35-40 min",
+                    warmup: "3 rounds: 10 air squats, 10 split jumps, 10 glute bridges",
+                    exercises: [
+                        { name: "DB Goblet Squat", sets: "5x5", weight: "Heavy (RPE 9)", rest: "2-3 min", notes: "Max weight, perfect form" },
+                        { name: "DB Romanian Deadlift", sets: "5x5", weight: "Heavy (RPE 9)", rest: "2-3 min", notes: "Feel the hamstrings" },
+                        { name: "Bulgarian Split Squat", sets: "4x6 each", weight: "Heavy", rest: "90 sec", notes: "Explosive up" },
+                        { name: "Single-Leg RDL", sets: "3x8 each", weight: "Moderate", rest: "60 sec", notes: "Balance and control" },
+                        { name: "Jump Squats", sets: "3x12", weight: "Bodyweight or light DB", rest: "60 sec", notes: "Explosive, full extension" }
+                    ],
+                    finisher: "Plyometric Circuit: 3 rounds - 10 box jumps (or step explosive), 10 split jumps each leg, 10 broad jumps"
+                },
+                {
+                    day: "Thursday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Light stretching"
+                },
+                {
+                    day: "Friday",
+                    title: "Full Body Circuit - CrossFit Style",
+                    duration: "35-40 min",
+                    warmup: "2 rounds: 10 burpees, 10 DB swings, 10 air squats, 10 push-ups",
+                    exercises: [
+                        { name: "Circuit Round 1-4", sets: "4 rounds", weight: "Moderate", rest: "90 sec between rounds", notes: "Complete all exercises before resting" },
+                        { name: "- DB Thrusters", sets: "12 reps", weight: "Moderate", rest: "0 sec", notes: "Squat to overhead press" },
+                        { name: "- Burpees", sets: "15 reps", weight: "Bodyweight", rest: "0 sec", notes: "Chest to ground" },
+                        { name: "- DB Single-Arm Snatch", sets: "8 each arm", weight: "Moderate", rest: "0 sec", notes: "Explosive hip drive" },
+                        { name: "- DB Bent Over Row", sets: "15 reps", weight: "Moderate", rest: "0 sec", notes: "Both arms" },
+                        { name: "- Mountain Climbers", sets: "30 reps total", weight: "Bodyweight", rest: "90 sec", notes: "Fast pace" }
+                    ],
+                    finisher: "AMRAP 5 minutes: 5 DB swings (heavy), 10 push-ups, 15 air squats"
+                },
+                {
+                    day: "Saturday",
+                    title: "Nike Long Run OR Lower Hypertrophy",
+                    duration: "Per NRC OR 35-40 min",
+                    warmup: "If lifting: 3 rounds: 10 air squats, 10 lunges, 10 leg swings",
+                    exercises: [
+                        { name: "DB Squat", sets: "4x12", weight: "Moderate-Heavy", rest: "90 sec", notes: "Tempo: 3 sec down" },
+                        { name: "DB Stiff-Leg Deadlift", sets: "4x12", weight: "Moderate-Heavy", rest: "90 sec", notes: "Focus on stretch" },
+                        { name: "DB Reverse Lunge", sets: "3x10 each", weight: "Moderate", rest: "60 sec", notes: "" },
+                        { name: "DB Step-Ups", sets: "3x15 each", weight: "Light-Moderate", rest: "60 sec", notes: "Explosive up" },
+                        { name: "Goblet Squat Pulses", sets: "3x20", weight: "Light", rest: "45 sec", notes: "Stay in bottom half, pulse" }
+                    ],
+                    finisher: "Death by Thrusters: Minute 1 = 1 rep, Minute 2 = 2 reps, etc. until failure"
+                },
+                {
+                    day: "Sunday",
+                    title: "Rest / Active Recovery",
+                    duration: "Recovery day",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Yoga, stretching, or easy walk"
+                }
+            ]
+        };
+        
+        // Week 6 - Similar to Week 5 with progression
+        const week6 = _.cloneDeep(week5);
+        week6.week = 6;
+        week6.focus = "Increase weight 5-10% on main lifts, maintain intensity";
+        
+        // Week 7 - Peak of Phase 2
+        const week7 = _.cloneDeep(week5);
+        week7.week = 7;
+        week7.focus = "Peak week - push maximum weights before Phase 3";
+        
+        // PHASE 3: WEEKS 8-10 - PEAK PERFORMANCE
+        const week8 = {
+            week: 8,
+            phase: "Phase 3: Peak Performance",
+            focus: "Max strength testing - hit PRs on all major lifts",
+            days: [
+                {
+                    day: "Monday",
+                    title: "Heavy Strength - Max Effort Upper",
+                    duration: "35-40 min",
+                    warmup: "5 minutes dynamic stretching, then 3 warm-up sets for bench (empty, 50%, 75%)",
+                    exercises: [
+                        { name: "DB Bench Press", sets: "5x3", weight: "Heavy (RPE 10)", rest: "3 min", notes: "Go for 3RM - maximum weight!" },
+                        { name: "DB Push Press", sets: "4x3", weight: "Heavy (RPE 9-10)", rest: "3 min", notes: "Test your power" },
+                        { name: "DB Bent Over Row", sets: "5x5", weight: "Heavy (RPE 9)", rest: "2 min", notes: "Heavy and controlled" },
+                        { name: "DB Floor Press", sets: "3x5", weight: "Heavy", rest: "2 min", notes: "Maximum tricep strength" },
+                        { name: "DB Pullover", sets: "3x8", weight: "Heavy", rest: "90 sec", notes: "Full stretch" }
+                    ],
+                    finisher: "Max rep challenge: Max unbroken push-ups + Max unbroken DB rows (moderate weight)"
+                },
+                {
+                    day: "Tuesday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Post-run core: 3x max plank hold"
+                },
+                {
+                    day: "Wednesday",
+                    title: "Heavy Strength - Max Effort Lower",
+                    duration: "35-40 min",
+                    warmup: "5 minutes dynamic stretching, 3 warm-up sets for squat",
+                    exercises: [
+                        { name: "DB Goblet Squat", sets: "5x3", weight: "Heavy (RPE 10)", rest: "3 min", notes: "Go for 3RM - test your max!" },
+                        { name: "DB Romanian Deadlift", sets: "5x3", weight: "Heavy (RPE 10)", rest: "3 min", notes: "Maximum weight, perfect form" },
+                        { name: "Bulgarian Split Squat", sets: "4x5 each", weight: "Heavy", rest: "2 min", notes: "Heavy as possible" },
+                        { name: "DB Stiff-Leg Deadlift", sets: "3x8", weight: "Heavy", rest: "90 sec", notes: "Feel the hamstrings" },
+                        { name: "Walking Lunges", sets: "3x20 total", weight: "Heavy", rest: "90 sec", notes: "Weighted" }
+                    ],
+                    finisher: "For time: 50 thrusters (moderate weight) - record your time!"
+                },
+                {
+                    day: "Thursday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Light stretching"
+                },
+                {
+                    day: "Friday",
+                    title: "MetCon Emphasis - WOD Style",
+                    duration: "40 min",
+                    warmup: "3 rounds: 10 burpees, 10 DB swings, 10 air squats",
+                    exercises: [
+                        { name: "EMOM 20 minutes", sets: "20 rounds", weight: "Moderate-Heavy", rest: "None", notes: "Every Minute On the Minute:" },
+                        { name: "- Minute 1: DB Thrusters", sets: "12 reps", weight: "Moderate", rest: "0 sec", notes: "Fast pace" },
+                        { name: "- Minute 2: Burpees", sets: "15 reps", weight: "Bodyweight", rest: "0 sec", notes: "Chest to ground" },
+                        { name: "- Minute 3: DB Snatch", sets: "10 total", weight: "Moderate", rest: "0 sec", notes: "5 each arm" },
+                        { name: "- Minute 4: Mountain Climbers", sets: "30 reps", weight: "Bodyweight", rest: "0 sec", notes: "Fast" },
+                        { name: "- Minute 5: Rest", sets: "Active recovery", weight: "N/A", rest: "60 sec", notes: "Walk around, breathe" }
+                    ],
+                    finisher: "Max effort: 100 DB swings for time (heavy)"
+                },
+                {
+                    day: "Saturday",
+                    title: "Nike Long Run OR Active Recovery Circuit",
+                    duration: "Per NRC OR 30 min light circuit",
+                    warmup: "If circuit: light cardio 5 min",
+                    exercises: [
+                        { name: "Light Circuit - 3 rounds", sets: "3 rounds", weight: "Light", rest: "60 sec between rounds", notes: "Active recovery pace" },
+                        { name: "- DB Squat", sets: "15 reps", weight: "Light", rest: "0 sec", notes: "Controlled" },
+                        { name: "- DB Romanian Deadlift", sets: "15 reps", weight: "Light", rest: "0 sec", notes: "Stretch focus" },
+                        { name: "- DB Reverse Lunge", sets: "10 each", weight: "Light", rest: "0 sec", notes: "Balance work" },
+                        { name: "- Bodyweight Squats", sets: "20 reps", weight: "Bodyweight", rest: "0 sec", notes: "Tempo: slow" },
+                        { name: "- Plank Hold", sets: "60 sec", weight: "Bodyweight", rest: "60 sec", notes: "Core stability" }
+                    ],
+                    finisher: "Stretch and mobility work - 10 minutes"
+                },
+                {
+                    day: "Sunday",
+                    title: "Rest Day",
+                    duration: "Full rest",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Recovery - you earned it!"
+                }
+            ]
+        };
+        
+        // Week 9 - Recovery week
+        const week9 = {
+            week: 9,
+            phase: "Phase 3: Deload & Recovery",
+            focus: "Active recovery - reduce volume 50%, focus on movement quality",
+            days: [
+                {
+                    day: "Monday",
+                    title: "Upper Body - Light",
+                    duration: "25-30 min",
+                    warmup: "Light cardio 5 min, arm circles, stretching",
+                    exercises: [
+                        { name: "DB Bench Press", sets: "3x8", weight: "60% of max", rest: "90 sec", notes: "Focus on form" },
+                        { name: "DB Incline Press", sets: "2x10", weight: "Light", rest: "60 sec", notes: "Controlled" },
+                        { name: "DB Bent Over Row", sets: "3x10", weight: "Light", rest: "60 sec", notes: "Squeeze lats" },
+                        { name: "DB Overhead Press", sets: "2x12", weight: "Light", rest: "60 sec", notes: "Full ROM" },
+                        { name: "Lateral Raise", sets: "2x15", weight: "Light", rest: "45 sec", notes: "" }
+                    ],
+                    finisher: "Easy pace: 50 push-ups total, 50 DB rows total - break up as needed"
+                },
+                {
+                    day: "Tuesday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Light stretching"
+                },
+                {
+                    day: "Wednesday",
+                    title: "Lower Body - Light",
+                    duration: "25-30 min",
+                    warmup: "Light cardio 5 min, leg swings, stretching",
+                    exercises: [
+                        { name: "DB Goblet Squat", sets: "3x10", weight: "60% of max", rest: "90 sec", notes: "Slow and controlled" },
+                        { name: "DB Romanian Deadlift", sets: "3x10", weight: "Light", rest: "90 sec", notes: "Focus on stretch" },
+                        { name: "Bulgarian Split Squat", sets: "2x8 each", weight: "Light", rest: "60 sec", notes: "Balance work" },
+                        { name: "DB Calf Raises", sets: "3x15", weight: "Light", rest: "45 sec", notes: "Pause at top" }
+                    ],
+                    finisher: "Easy bodyweight: 50 air squats, 30 lunges (15 each leg)"
+                },
+                {
+                    day: "Thursday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Stretching and foam rolling"
+                },
+                {
+                    day: "Friday",
+                    title: "Full Body - Movement Quality",
+                    duration: "25-30 min",
+                    warmup: "10 min easy movement: jumping jacks, air squats, push-ups",
+                    exercises: [
+                        { name: "Light Circuit - 3 rounds", sets: "3 rounds", weight: "Light weights", rest: "90 sec between rounds", notes: "Focus on perfect form" },
+                        { name: "- DB Thrusters", sets: "10 reps", weight: "Light", rest: "0 sec", notes: "Controlled pace" },
+                        { name: "- Push-ups", sets: "12 reps", weight: "Bodyweight", rest: "0 sec", notes: "Full ROM" },
+                        { name: "- DB Row", sets: "12 reps", weight: "Light", rest: "0 sec", notes: "Both arms" },
+                        { name: "- Air Squats", sets: "15 reps", weight: "Bodyweight", rest: "0 sec", notes: "Deep" },
+                        { name: "- Plank", sets: "45 sec", weight: "Bodyweight", rest: "90 sec", notes: "Solid core" }
+                    ],
+                    finisher: "Easy pace mobility work - 10 minutes"
+                },
+                {
+                    day: "Saturday",
+                    title: "Nike Long Run OR Yoga",
+                    duration: "Per NRC OR 30-45 min yoga",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Full body stretch routine"
+                },
+                {
+                    day: "Sunday",
+                    title: "Rest Day",
+                    duration: "Full rest",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Recover and prepare for assessment week!"
+                }
+            ]
+        };
+        
+        // Week 10 - Assessment week
+        const week10 = {
+            week: 10,
+            phase: "Phase 3: Assessment Week",
+            focus: "Test all your gains - celebrate progress!",
+            days: [
+                {
+                    day: "Monday",
+                    title: "Upper Body Assessment",
+                    duration: "40 min",
+                    warmup: "Thorough warm-up: 10 min dynamic stretching, 3 progressive warm-up sets",
+                    exercises: [
+                        { name: "DB Bench Press - Test Max", sets: "Work up to 1-3RM", weight: "Max Effort", rest: "3-4 min", notes: "Record your PR!" },
+                        { name: "DB Push Press - Test Max", sets: "Work up to 1-3RM", weight: "Max Effort", rest: "3-4 min", notes: "Record your PR!" },
+                        { name: "Max Rep Challenge: Push-ups", sets: "1 max set", weight: "Bodyweight", rest: "3 min", notes: "Unbroken reps - record total" },
+                        { name: "Max Rep Challenge: DB Rows", sets: "1 max set", weight: "Moderate", rest: "3 min", notes: "Unbroken reps - record total" },
+                        { name: "DB Bent Over Row", sets: "3x5", weight: "Heavy", rest: "2 min", notes: "Test your pulling strength" }
+                    ],
+                    finisher: "Victory lap: 100 push-ups total, break up as needed"
+                },
+                {
+                    day: "Tuesday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Celebrate your running progress!"
+                },
+                {
+                    day: "Wednesday",
+                    title: "Lower Body Assessment",
+                    duration: "40 min",
+                    warmup: "Thorough warm-up: 10 min dynamic stretching, 3 progressive warm-up sets",
+                    exercises: [
+                        { name: "DB Goblet Squat - Test Max", sets: "Work up to 1-3RM", weight: "Max Effort", rest: "3-4 min", notes: "Record your PR!" },
+                        { name: "DB Romanian Deadlift - Test Max", sets: "Work up to 1-3RM", weight: "Max Effort", rest: "3-4 min", notes: "Record your PR!" },
+                        { name: "Bulgarian Split Squat", sets: "3x5 each", weight: "Heavy", rest: "2 min", notes: "Test your single-leg strength" },
+                        { name: "Max Rep Challenge: Air Squats", sets: "1 max set", weight: "Bodyweight", rest: "3 min", notes: "Unbroken - record total" },
+                        { name: "Max Rep Challenge: Walking Lunges", sets: "1 max set", weight: "Bodyweight", rest: "N/A", notes: "Distance - record total reps" }
+                    ],
+                    finisher: "Hero WOD: 100 thrusters for time (moderate weight) - test your conditioning!"
+                },
+                {
+                    day: "Thursday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "You're almost there!"
+                },
+                {
+                    day: "Friday",
+                    title: "MetCon Assessment - Full Test",
+                    duration: "45 min",
+                    warmup: "10 min progressive warm-up: easy jog, jumping jacks, burpees, air squats",
+                    exercises: [
+                        { name: "Benchmark WOD: 'The Gauntlet'", sets: "For Time", weight: "Moderate", rest: "None", notes: "Complete all reps AFAP - record time!" },
+                        { name: "- DB Thrusters", sets: "50 reps", weight: "Moderate", rest: "0 sec", notes: "Break up as needed" },
+                        { name: "- Burpees", sets: "40 reps", weight: "Bodyweight", rest: "0 sec", notes: "Chest to ground" },
+                        { name: "- DB Snatch (alternating)", sets: "30 reps", weight: "Moderate", rest: "0 sec", notes: "15 each arm" },
+                        { name: "- DB Bent Over Row", sets: "40 reps", weight: "Moderate", rest: "0 sec", notes: "Both arms" },
+                        { name: "- Mountain Climbers", sets: "100 reps", weight: "Bodyweight", rest: "0 sec", notes: "Push through!" },
+                        { name: "- DB Swings", sets: "50 reps", weight: "Heavy", rest: "Done!", notes: "Finish strong!" }
+                    ],
+                    finisher: "YOU DID IT! Take photos, measurements, record all your PRs!"
+                },
+                {
+                    day: "Saturday",
+                    title: "Nike Long Run OR Victory Lap",
+                    duration: "Per NRC OR celebrate!",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Reflect on your progress - you've earned this!"
+                },
+                {
+                    day: "Sunday",
+                    title: "Rest & Celebrate",
+                    duration: "Recovery",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Review your 10-week journey. Compare Week 1 to Week 10. Plan your next challenge!"
+                }
+            ]
+        };
+        
+        // PHASE 4: WEEKS 11-14 - POWER ENDURANCE & RACE PREP
+        const week11 = {
+            week: 11,
+            phase: "Phase 4: Power Endurance & Race Prep",
+            focus: "Muscular endurance focus - support increasing run volume",
+            days: [
+                {
+                    day: "Monday",
+                    title: "Upper Body Strength-Endurance",
+                    duration: "30-35 min",
+                    warmup: "5 min light cardio, arm circles, 2 rounds: 10 push-ups, 10 DB press (light)",
+                    exercises: [
+                        { name: "Superset A1: DB Bench Press", sets: "3x12", weight: "Moderate", rest: "30 sec", notes: "Go to A2" },
+                        { name: "Superset A2: DB Bent Over Row", sets: "3x12", weight: "Moderate", rest: "60 sec", notes: "Push-pull combo" },
+                        { name: "Superset B1: DB Incline Press", sets: "3x15", weight: "Moderate", rest: "30 sec", notes: "Go to B2" },
+                        { name: "Superset B2: Single-Arm DB Row", sets: "3x12 each", weight: "Moderate", rest: "60 sec", notes: "" },
+                        { name: "Superset C1: DB Overhead Press", sets: "3x12", weight: "Moderate", rest: "30 sec", notes: "Go to C2" },
+                        { name: "Superset C2: DB Pullover", sets: "3x15", weight: "Light-Moderate", rest: "60 sec", notes: "" },
+                        { name: "Finisher Superset: Lateral Raise", sets: "2x20", weight: "Light", rest: "30 sec", notes: "Go to bicep curls" },
+                        { name: "Finisher Superset: DB Bicep Curl", sets: "2x15", weight: "Light-Moderate", rest: "45 sec", notes: "Last exercise" }
+                    ],
+                    finisher: "100 total reps: Alternate 10 push-ups, 10 DB rows (light) until you hit 100 total"
+                },
+                {
+                    day: "Tuesday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Light stretching, focus on recovery"
+                },
+                {
+                    day: "Wednesday",
+                    title: "Lower Body Endurance & Stability",
+                    duration: "30-35 min",
+                    warmup: "5 min light cardio, leg swings, 2 rounds: 10 air squats, 10 lunges, 10 glute bridges",
+                    exercises: [
+                        { name: "DB Goblet Squat", sets: "3x15", weight: "Moderate", rest: "60 sec", notes: "Tempo: 3 sec down, 1 sec up" },
+                        { name: "DB Romanian Deadlift", sets: "3x15", weight: "Moderate", rest: "60 sec", notes: "Focus on hamstring stretch" },
+                        { name: "Bulgarian Split Squat", sets: "3x12 each", weight: "Light-Moderate", rest: "45 sec", notes: "Slow and controlled, runner focus" },
+                        { name: "Single-Leg RDL", sets: "3x12 each", weight: "Light", rest: "45 sec", notes: "Balance and stability - injury prevention" },
+                        { name: "DB Reverse Lunge", sets: "3x12 each", weight: "Light-Moderate", rest: "45 sec", notes: "Control the descent" },
+                        { name: "DB Step-Ups", sets: "3x15 each", weight: "Light", rest: "45 sec", notes: "Explosive up, controlled down" },
+                        { name: "DB Calf Raises", sets: "3x20", weight: "Moderate", rest: "45 sec", notes: "Pause at top, runner essential" }
+                    ],
+                    finisher: "3 rounds: 15 bodyweight squats, 10 split jumps (5 each leg), 20 calf raises, 30 sec rest"
+                },
+                {
+                    day: "Thursday",
+                    title: "Nike Run Club Workout",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Foam rolling and stretching"
+                },
+                {
+                    day: "Friday",
+                    title: "Full Body Circuit - Maintenance",
+                    duration: "25-30 min",
+                    warmup: "5 min: jumping jacks, air squats, push-ups, arm circles",
+                    exercises: [
+                        { name: "Circuit - 3 Rounds", sets: "3 rounds", weight: "Moderate", rest: "90 sec between rounds", notes: "Complete all exercises, then rest" },
+                        { name: "- DB Thrusters", sets: "15 reps", weight: "Moderate", rest: "0 sec", notes: "" },
+                        { name: "- Push-ups", sets: "15 reps", weight: "Bodyweight", rest: "0 sec", notes: "" },
+                        { name: "- DB Romanian Deadlift", sets: "15 reps", weight: "Moderate", rest: "0 sec", notes: "" },
+                        { name: "- DB Bent Over Row", sets: "15 reps", weight: "Moderate", rest: "0 sec", notes: "" },
+                        { name: "- Mountain Climbers", sets: "30 reps", weight: "Bodyweight", rest: "0 sec", notes: "" },
+                        { name: "- Plank Hold", sets: "45 sec", weight: "Bodyweight", rest: "90 sec", notes: "Strong core" }
+                    ],
+                    finisher: "Optional: 5 min easy cardio cooldown"
+                },
+                {
+                    day: "Saturday",
+                    title: "Nike Long Run (PRIORITY)",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Post-run: Full body stretch routine, 10-15 minutes"
+                },
+                {
+                    day: "Sunday",
+                    title: "Rest Day",
+                    duration: "Full rest",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Recovery, mobility work, or easy walk"
+                }
+            ]
+        };
+        
+        // Weeks 12-14 similar to week 11 structure
+        const week12 = _.cloneDeep(week11);
+        week12.week = 12;
+        week12.focus = "Continue endurance focus, maintain strength without fatigue";
+        
+        const week13 = _.cloneDeep(week11);
+        week13.week = 13;
+        week13.focus = "Final push of strength work, running volume likely at peak";
+        
+        const week14 = _.cloneDeep(week11);
+        week14.week = 14;
+        week14.focus = "Last full strength week before taper - maintain quality movement";
+        
+        // PHASE 5: WEEKS 15-18 - TAPER, MAINTENANCE & RACE WEEK
+        const week15 = {
+            week: 15,
+            phase: "Phase 5: Taper, Maintenance & Race Week",
+            focus: "Begin taper - light maintenance, minimal fatigue",
+            days: [
+                {
+                    day: "Monday",
+                    title: "Upper Body Maintenance - Light",
+                    duration: "20-25 min",
+                    warmup: "5 min easy movement, arm circles, light stretching",
+                    exercises: [
+                        { name: "DB Bench Press", sets: "3x8", weight: "70% of normal", rest: "90 sec", notes: "Just maintain, no PRs" },
+                        { name: "DB Bent Over Row", sets: "3x8", weight: "70% of normal", rest: "90 sec", notes: "Keep the muscle active" },
+                        { name: "DB Overhead Press", sets: "2x10", weight: "Light", rest: "60 sec", notes: "Movement quality" },
+                        { name: "DB Bicep Curl", sets: "2x12", weight: "Light", rest: "45 sec", notes: "Light pump" },
+                        { name: "Lateral Raise", sets: "2x15", weight: "Light", rest: "45 sec", notes: "Keep shoulders healthy" }
+                    ],
+                    finisher: "Easy: 30 push-ups total (break up as needed)"
+                },
+                {
+                    day: "Tuesday",
+                    title: "Nike Run Club Workout (Taper)",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Light stretching"
+                },
+                {
+                    day: "Wednesday",
+                    title: "Lower Body Maintenance - Light",
+                    duration: "20-25 min",
+                    warmup: "5 min easy movement, leg swings, light stretching",
+                    exercises: [
+                        { name: "DB Goblet Squat", sets: "3x8", weight: "70% of normal", rest: "90 sec", notes: "Focus on form, stay fresh" },
+                        { name: "DB Romanian Deadlift", sets: "3x8", weight: "70% of normal", rest: "90 sec", notes: "Hamstring health" },
+                        { name: "Bulgarian Split Squat", sets: "2x8 each", weight: "Light", rest: "60 sec", notes: "Balance work" },
+                        { name: "Single-Leg RDL", sets: "2x10 each", weight: "Light", rest: "45 sec", notes: "Stability maintenance" },
+                        { name: "DB Calf Raises", sets: "2x15", weight: "Light", rest: "45 sec", notes: "Keep calves ready" }
+                    ],
+                    finisher: "Easy: 30 bodyweight squats, slow and controlled"
+                },
+                {
+                    day: "Thursday",
+                    title: "Nike Run Club Workout (Taper)",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Stretching and foam rolling"
+                },
+                {
+                    day: "Friday",
+                    title: "Light Movement Session",
+                    duration: "20 min (OPTIONAL)",
+                    warmup: "Full body dynamic stretching",
+                    exercises: [
+                        { name: "Easy Circuit - 2 Rounds", sets: "2 rounds", weight: "Light", rest: "60 sec", notes: "Optional - skip if tired" },
+                        { name: "- DB Thrusters", sets: "10 reps", weight: "Light", rest: "0 sec", notes: "" },
+                        { name: "- Push-ups", sets: "10 reps", weight: "Bodyweight", rest: "0 sec", notes: "" },
+                        { name: "- DB Row", sets: "10 reps", weight: "Light", rest: "0 sec", notes: "" },
+                        { name: "- Bodyweight Squats", sets: "15 reps", weight: "Bodyweight", rest: "0 sec", notes: "" },
+                        { name: "- Plank", sets: "30 sec", weight: "Bodyweight", rest: "60 sec", notes: "" }
+                    ],
+                    finisher: "OR skip lifting and do yoga/mobility"
+                },
+                {
+                    day: "Saturday",
+                    title: "Nike Long Run (Reduced Volume)",
+                    duration: "Per NRC app",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Post-run stretching routine"
+                },
+                {
+                    day: "Sunday",
+                    title: "Rest Day",
+                    duration: "Full rest",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Recovery and relaxation"
+                }
+            ]
+        };
+        
+        const week16 = _.cloneDeep(week15);
+        week16.week = 16;
+        week16.focus = "Continue light maintenance, trust your training";
+        
+        const week17 = _.cloneDeep(week15);
+        week17.week = 17;
+        week17.focus = "Final light week before race - stay loose and fresh";
+        
+        // WEEK 18 - RACE WEEK
+        const week18 = {
+            week: 18,
+            phase: "Phase 5: RACE WEEK! 🏁",
+            focus: "Minimal work, maximum freshness - you're ready!",
+            days: [
+                {
+                    day: "Monday",
+                    title: "Very Light Full Body Movement",
+                    duration: "15-20 min",
+                    warmup: "Easy 5 min movement, full body stretching",
+                    exercises: [
+                        { name: "DB Bench Press", sets: "2x10", weight: "50% of normal", rest: "60 sec", notes: "Just movement, nothing heavy" },
+                        { name: "DB Goblet Squat", sets: "2x10", weight: "50% of normal", rest: "60 sec", notes: "Keep legs awake" },
+                        { name: "DB Row", sets: "2x10", weight: "Light", rest: "60 sec", notes: "Light activation" },
+                        { name: "DB Overhead Press", sets: "2x8", weight: "Very Light", rest: "60 sec", notes: "Movement only" },
+                        { name: "Bodyweight Squats", sets: "2x15", weight: "Bodyweight", rest: "45 sec", notes: "Easy" }
+                    ],
+                    finisher: "Light stretching - 10 minutes"
+                },
+                {
+                    day: "Tuesday",
+                    title: "Nike Run - Shakeout or Rest",
+                    duration: "Per NRC app (likely very short easy run or rest)",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Gentle stretching"
+                },
+                {
+                    day: "Wednesday",
+                    title: "Mobility & Stretching ONLY",
+                    duration: "20-30 min",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "NO LIFTING - Full body mobility routine, foam rolling, yoga, or gentle stretching. Stay loose!"
+                },
+                {
+                    day: "Thursday",
+                    title: "Nike Run - Short Shakeout",
+                    duration: "Per NRC app (very short, easy pace)",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Light stretching, stay relaxed"
+                },
+                {
+                    day: "Friday",
+                    title: "Rest / Light Stretching",
+                    duration: "Minimal activity",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Easy walk if anything, focus on hydration and nutrition"
+                },
+                {
+                    day: "Saturday",
+                    title: "Rest & Race Prep",
+                    duration: "Rest day",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "Hydrate, eat well, prep your gear, visualize success, get good sleep!"
+                },
+                {
+                    day: "Sunday",
+                    title: "RACE DAY! 🏃‍♂️🏁💪",
+                    duration: "26.2 MILES!",
+                    warmup: "",
+                    exercises: [],
+                    finisher: "YOU DID IT! 18 weeks of hard work pays off TODAY. Trust your training. Run YOUR race. Finish strong. CONGRATULATIONS! 🎉"
+                }
+            ]
+        };
+        
+        // Compile all weeks
+        const programData = {
+            weeks: [week1, week2, week3, week4, week5, week6, week7, week8, week9, week10, week11, week12, week13, week14, week15, week16, week17, week18]
+        };
         
         // Render program
         function renderProgram() {
@@ -601,7 +1214,7 @@
         }
         
         renderProgram();
-        console.log("Program loaded with full workout details and working checkboxes!");
+        console.log("18-Week Shredded Runner Program loaded successfully! Good luck on race day!");
     </script>
 </body>
 </html>
